@@ -42,7 +42,12 @@ end
 
 post "/proxy", :provides => :json do
   params = JSON.parse(request.env["rack.input"].read)
-  uri = URI(params['text'])
+  if params['title']
+    uri = URI("https://en.wikipedia.org/wiki/#{params['title'].gsub(/ /,'_')}")
+  else
+    uri = URI(params['text'])
+  end
+  puts uri
   html = Net::HTTP.get(uri)
   html.force_encoding('UTF-8')
   title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
