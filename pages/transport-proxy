@@ -1,0 +1,94 @@
+{
+  "title": "Transport Proxy",
+  "story": [
+    {
+      "type": "paragraph",
+      "id": "01c3f43b5bf3cb51",
+      "text": "We experiment with transporting pages that can proxy back to the transporter using well crafted sitemaps."
+    },
+    {
+      "type": "transport",
+      "id": "0057cd733f061dd3",
+      "text": "POST http://localhost:4020/proxy"
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "Transport Proxy",
+        "story": []
+      },
+      "date": 1458054403939
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "01c3f43b5bf3cb51"
+      },
+      "id": "01c3f43b5bf3cb51",
+      "type": "add",
+      "date": 1458054412132
+    },
+    {
+      "type": "edit",
+      "id": "01c3f43b5bf3cb51",
+      "item": {
+        "type": "paragraph",
+        "id": "01c3f43b5bf3cb51",
+        "text": "We experiment with transporting pages that can proxy back to the transporter using well crafted sitemaps."
+      },
+      "date": 1458054481724
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "0057cd733f061dd3"
+      },
+      "id": "0057cd733f061dd3",
+      "type": "add",
+      "after": "01c3f43b5bf3cb51",
+      "date": 1458054541114
+    },
+    {
+      "type": "edit",
+      "id": "0057cd733f061dd3",
+      "item": {
+        "type": "transport",
+        "id": "0057cd733f061dd3",
+        "text": "POST localhost"
+      },
+      "date": 1458054558916
+    },
+    {
+      "type": "edit",
+      "id": "0057cd733f061dd3",
+      "item": {
+        "type": "transport",
+        "id": "0057cd733f061dd3",
+        "text": "POST localhost/proxy"
+      },
+      "date": 1458055256814
+    },
+    {
+      "type": "edit",
+      "id": "0057cd733f061dd3",
+      "item": {
+        "type": "transport",
+        "id": "0057cd733f061dd3",
+        "text": "POST localhost:4020/proxy"
+      },
+      "date": 1458055313365
+    },
+    {
+      "type": "edit",
+      "id": "0057cd733f061dd3",
+      "item": {
+        "type": "transport",
+        "id": "0057cd733f061dd3",
+        "text": "POST http://localhost:4020/proxy"
+      },
+      "date": 1458056191333
+    }
+  ]
+}
