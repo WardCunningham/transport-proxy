@@ -31,7 +31,7 @@ get '/' do
     </head>
     <body style="padding:40px; text-align:center;">
       <h1>Transport Proxy</h1>
-      <p><a id=link target="_blank" href="http://ward.asia.wiki.org/">details</a></p>
+      <p><a id=link target="_blank" href="http://localhost:3030/">begin</a></p>
       <script>
         link.href += location.host + "/transport-proxy"
       </script>

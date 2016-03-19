@@ -10,6 +10,11 @@
       "type": "transport",
       "id": "0057cd733f061dd3",
       "text": "POST http://localhost:4020/proxy"
+    },
+    {
+      "type": "paragraph",
+      "id": "9bc5c751cd2735d7",
+      "text": "See [[Transporting Hypertext]]"
     }
   ],
   "journal": [
@@ -89,6 +94,26 @@
         "text": "POST http://localhost:4020/proxy"
       },
       "date": 1458056191333
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "9bc5c751cd2735d7"
+      },
+      "id": "9bc5c751cd2735d7",
+      "type": "add",
+      "after": "0057cd733f061dd3",
+      "date": 1458398411828
+    },
+    {
+      "type": "edit",
+      "id": "9bc5c751cd2735d7",
+      "item": {
+        "type": "paragraph",
+        "id": "9bc5c751cd2735d7",
+        "text": "See [[Transporting Hypertext]]"
+      },
+      "date": 1458398424027
     }
   ]
 }
