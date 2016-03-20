@@ -20,16 +20,8 @@ end
 
 # journal actions
 
-def create title
-  @journal << {:type => :create, :id => random, :date => @date, :transport => 'http://localhost:4020/proxy', :item => {:title => title}}
-  @date += 1
-end
-
 def add item
-  after = @story.last ? @story.last[:id] : nil
   @story << item
-  @journal << {:type => :add, :id => item[:id], :item => item, :date => @date, :after => after }
-  @date += 1
 end
 
 # story emiters
@@ -48,13 +40,11 @@ def image url, caption
   item :image, {:url => url, :text => caption}
 end
 
-def page title, date=Time.now.to_i*1000
-  @date = date
+def page title, source=nil
   @story = []
-  @journal = []
-  create title
   yield
-  page = {:title => title,  :story => @story, :journal => @journal}
-  JSON.pretty_generate(page)
+  date=Time.now.to_i*1000
+  journal = [{:type => :create, :id => random, :date => date, :source => source, :item => {:title => title,  :story => @story}}]
+  JSON.pretty_generate({:title => title,  :story => @story, :journal => journal})
 end
 

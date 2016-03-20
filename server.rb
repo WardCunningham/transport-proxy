@@ -14,7 +14,8 @@ helpers do
     html = Net::HTTP.get(uri)
     html.force_encoding('UTF-8')
     title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
-    page title do
+    source = {:url => uri.to_s, :transport => 'http://localhost:4020/proxy'}
+    page title, source do
       paragraph "From [[Explore Transport Proxy]]. See [#{uri} wikipedia]"
       count = Hash.new(0)
       html.scan(/href="\/wiki\/([^"]+)" title="([^^"]+)"/) do |href, title|
@@ -81,7 +82,8 @@ post "/import", :provides => :json do
     linkuri = URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
     pages[slug title] = JSON.parse wikilinks linkuri
   end
-  page "#{links['title']} (import)" do
+  source = {:url => uri.to_s, :transport => 'http://localhost:4020/import'}
+  page "#{links['title']} (import)", source do
     paragraph "Select a page linked from #{links['title']}. [#{uri} wikipedia]"
     item 'importer', :pages => pages
   end
