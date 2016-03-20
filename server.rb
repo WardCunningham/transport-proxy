@@ -11,7 +11,6 @@ Encoding.default_external = Encoding::UTF_8
 helpers do
 
   def wikilinks uri
-    puts "wikilinks #{uri}"
     html = Net::HTTP.get(uri)
     html.force_encoding('UTF-8')
     title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
@@ -77,10 +76,10 @@ post "/import", :provides => :json do
   links = JSON.parse wikilinks uri
   pages = {}
   links['story'].each do |item|
-    puts item.inspect
     next unless item['text'] =~ /^\[/
     title = item['text'].gsub(/\[|\]/,'')
-    pages[slug title] = JSON.parse wikilinks URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
+    uri = URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
+    pages[slug title] = JSON.parse wikilinks uri
   end
   page "#{links['title']} (import)" do
     paragraph "Select a page linked from #{links['title']}. [#{uri} wikipedia]"
