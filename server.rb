@@ -78,8 +78,8 @@ post "/import", :provides => :json do
   links['story'].each do |item|
     next unless item['text'] =~ /^\[/
     title = item['text'].gsub(/\[|\]/,'')
-    uri = URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
-    pages[slug title] = JSON.parse wikilinks uri
+    linkuri = URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
+    pages[slug title] = JSON.parse wikilinks linkuri
   end
   page "#{links['title']} (import)" do
     paragraph "Select a page linked from #{links['title']}. [#{uri} wikipedia]"
