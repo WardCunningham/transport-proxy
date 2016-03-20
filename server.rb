@@ -9,6 +9,23 @@ set :port, 4020
 Encoding.default_external = Encoding::UTF_8
 
 helpers do
+
+  def wikilinks uri
+    puts "wikilinks #{uri}"
+    html = Net::HTTP.get(uri)
+    html.force_encoding('UTF-8')
+    title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
+    page title do
+      paragraph "From [[Explore Transport Proxy]]. See [#{uri} wikipedia]"
+      count = Hash.new(0)
+      html.scan(/href="\/wiki\/([^"]+)" title="([^^"]+)"/) do |href, title|
+        next unless title =~ /^[a-zA-Z ]+$/
+        next unless (count[title]+=1) == 1
+        paragraph "[[#{title}]]"
+      end
+    end
+  end
+
 end
 
 before do
@@ -47,15 +64,27 @@ post "/proxy", :provides => :json do
   else
     uri = URI(params['text'])
   end
-  puts uri
-  html = Net::HTTP.get(uri)
-  html.force_encoding('UTF-8')
-  title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
-  page title do
-    paragraph "From [[Explore Transport Proxy]]. See [#{params['text']} wikipedia]"
-    html.scan(/href="\/wiki\/([^"]+)" title="([^^"]+)"/) do |href, title|
-      paragraph "[[#{title}]]"
-    end
+  wikilinks uri
+end
+
+post "/import", :provides => :json do
+  params = JSON.parse(request.env["rack.input"].read)
+  if params['title']
+    uri = URI("https://en.wikipedia.org/wiki/#{params['title'].gsub(/ /,'_')}")
+  else
+    uri = URI(params['text'])
+  end
+  links = JSON.parse wikilinks uri
+  pages = {}
+  links['story'].each do |item|
+    puts item.inspect
+    next unless item['text'] =~ /^\[/
+    title = item['text'].gsub(/\[|\]/,'')
+    pages[slug title] = JSON.parse wikilinks URI("https://en.wikipedia.org/wiki/#{title.gsub(/ /,'_')}")
+  end
+  page "#{links['title']} (import)" do
+    paragraph "Select a page linked from #{links['title']}. [#{uri} wikipedia]"
+    item 'importer', :pages => pages
   end
 end
 

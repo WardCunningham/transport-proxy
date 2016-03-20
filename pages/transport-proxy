@@ -7,9 +7,25 @@
       "text": "We experiment with transporting pages that can proxy back to the transporter using well crafted sitemaps."
     },
     {
+      "type": "paragraph",
+      "id": "89e485440e23fbc1",
+      "text": "Try dragging a page like Literary Machines from [https://en.wikipedia.org/wiki/Literary_Machines wikipedia]"
+    },
+    {
+      "type": "transport",
+      "id": "c32132332589b13a",
+      "text": "POST http://localhost:4020/proxy",
+      "alias": "0057cd733f061dd3"
+    },
+    {
+      "type": "paragraph",
+      "id": "65dadc2943b3514a",
+      "text": "This version yields an importer for all linked pages."
+    },
+    {
       "type": "transport",
       "id": "0057cd733f061dd3",
-      "text": "POST http://localhost:4020/proxy"
+      "text": "POST http://localhost:4020/import"
     },
     {
       "type": "paragraph",
@@ -114,6 +130,119 @@
         "text": "See [[Transporting Hypertext]]"
       },
       "date": 1458398424027
+    },
+    {
+      "type": "add",
+      "id": "89e485440e23fbc1",
+      "item": {
+        "type": "paragraph",
+        "id": "89e485440e23fbc1",
+        "text": "Try dragging a page like Literary Machines from"
+      },
+      "after": "01c3f43b5bf3cb51",
+      "date": 1458492696988
+    },
+    {
+      "type": "edit",
+      "id": "89e485440e23fbc1",
+      "item": {
+        "type": "paragraph",
+        "id": "89e485440e23fbc1",
+        "text": "Try dragging a page like Literary Machines from [https://en.wikipedia.org/wiki/Literary_Machines wikipedia] to one of these transporters."
+      },
+      "date": 1458492724149
+    },
+    {
+      "type": "add",
+      "item": {
+        "type": "transport",
+        "id": "c32132332589b13a",
+        "text": "POST http://localhost:4020/proxy",
+        "alias": "0057cd733f061dd3"
+      },
+      "after": "0057cd733f061dd3",
+      "id": "c32132332589b13a",
+      "date": 1458492750866
+    },
+    {
+      "type": "edit",
+      "id": "0057cd733f061dd3",
+      "item": {
+        "type": "transport",
+        "id": "0057cd733f061dd3",
+        "text": "POST http://localhost:4020/import"
+      },
+      "date": 1458492770624
+    },
+    {
+      "type": "add",
+      "id": "65dadc2943b3514a",
+      "item": {
+        "type": "paragraph",
+        "id": "65dadc2943b3514a",
+        "text": "This version answers an importer with all links already fetched."
+      },
+      "after": "89e485440e23fbc1",
+      "date": 1458492846836
+    },
+    {
+      "type": "edit",
+      "id": "65dadc2943b3514a",
+      "item": {
+        "type": "paragraph",
+        "id": "65dadc2943b3514a",
+        "text": "This version yields an importer for all linked pages."
+      },
+      "date": 1458492879091
+    },
+    {
+      "type": "move",
+      "order": [
+        "01c3f43b5bf3cb51",
+        "89e485440e23fbc1",
+        "0057cd733f061dd3",
+        "65dadc2943b3514a",
+        "c32132332589b13a",
+        "9bc5c751cd2735d7"
+      ],
+      "id": "65dadc2943b3514a",
+      "date": 1458492882611
+    },
+    {
+      "type": "move",
+      "order": [
+        "01c3f43b5bf3cb51",
+        "89e485440e23fbc1",
+        "c32132332589b13a",
+        "0057cd733f061dd3",
+        "65dadc2943b3514a",
+        "9bc5c751cd2735d7"
+      ],
+      "id": "c32132332589b13a",
+      "date": 1458492983624
+    },
+    {
+      "type": "move",
+      "order": [
+        "01c3f43b5bf3cb51",
+        "89e485440e23fbc1",
+        "c32132332589b13a",
+        "65dadc2943b3514a",
+        "0057cd733f061dd3",
+        "9bc5c751cd2735d7"
+      ],
+      "id": "65dadc2943b3514a",
+      "date": 1458492987194
+    },
+    {
+      "type": "edit",
+      "id": "89e485440e23fbc1",
+      "item": {
+        "type": "paragraph",
+        "id": "89e485440e23fbc1",
+        "text": "Try dragging a page like Literary Machines from [https://en.wikipedia.org/wiki/Literary_Machines wikipedia]"
+      },
+      "date": 1458494414550
     }
   ]
 }
