@@ -12,8 +12,9 @@ helpers do
 
   def wikilinks uri
     html = Net::HTTP.get(uri)
+    STDERR.puts html.inspect
     html.force_encoding('UTF-8')
-    title = (/<title>(.+) - Wikipedia, the free encyclopedia<\/title>/.match html)[1]
+    title = (/<title>(.+) - Wikipedia<\/title>/.match html)[1]
     source = {:url => uri.to_s, :transport => 'http://localhost:4020/proxy'}
     page title, source do
       paragraph "From [[Explore Transport Proxy]]. See [#{uri} wikipedia]"
